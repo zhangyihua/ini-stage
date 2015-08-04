@@ -1,14 +1,14 @@
 {
-  "name": "iniStage",
+  "name": "ini-stage",
   "version": "1.0.0",
   "description": "An initialization scaffolding tool",
   "main": "index.js",
   "bin": {
-    "ini": "./bin/ini.js"
+    "ini": "./bin/ini"
   },
   "dependencies": {
-    "colors": "1.1.2",
-    "commander": "2.8.1"
+    "colors": "^1.1.2",
+    "commander": "^2.8.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
