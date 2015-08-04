@@ -1,0 +1,14 @@
+[
+	"html",
+	"css",
+	{
+		"js":[
+			"lib",
+			"mod"
+		]
+	},
+	"images",
+	"psd",
+	"doc",
+	"onlineBackup"
+]
