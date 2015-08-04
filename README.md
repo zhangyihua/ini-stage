@@ -4,7 +4,7 @@ An initialization scaffolding tool. I'm use it to initialize my project scaffold
 
 ## Install with npm
 
-`npm install -g iniStage`
+`npm install -g ini-stage`
 
 ## Usage
 
@@ -18,7 +18,7 @@ Options:
   -s, --start    Start initialize
 ```
 
-If you want to create a custom directory structure，as long as in the root directory of project to create a `config.json` file, in which contains a directory structure configuration . Also, iniStage provides a default `config.json` that is a common front end development project directory structure，its body is as follows.
+If you want to create a custom directory structure，as long as in the root directory of project to create a `config.json` file, in which contains a directory structure configuration . Also, ini-stage provides a default `config.json` that is a common front end development project directory structure，its body is as follows.
 
 ```json
 [
@@ -38,4 +38,3 @@ If you want to create a custom directory structure，as long as in the root dire
 
 ```
 
-The `config.json` must be an Array。
