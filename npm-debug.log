@@ -2,12 +2,11 @@
 1 verbose cli [ 'd:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'd:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'version',
-1 verbose cli   '1.0.1' ]
+1 verbose cli   '1.0.2' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.35
 4 error Error: Git working directory not clean.
-4 error D bin/ini.js
-4 error M package.json
+4 error D npm-debug.log
 4 error     at d:\Program Files\nodejs\node_modules\npm\lib\version.js:91:33
 4 error     at ChildProcess.exithandler (child_process.js:656:7)
 4 error     at ChildProcess.emit (events.js:98:17)
@@ -17,8 +16,8 @@
 5 error including the npm and node versions, at:
 5 error     <http://github.com/npm/npm/issues>
 6 error System Windows_NT 6.1.7601
-7 error command "d:\\Program Files\\nodejs\\node.exe" "d:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "version" "1.0.1"
-8 error cwd e:\yihua\demos\nodejs\package\iniStage
+7 error command "d:\\Program Files\\nodejs\\node.exe" "d:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "version" "1.0.2"
+8 error cwd e:\yihua\mygithub\ini-stage
 9 error node -v v0.10.35
 10 error npm -v 1.4.28
 11 verbose exit [ 1, true ]
