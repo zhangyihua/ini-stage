@@ -27,12 +27,14 @@ If you want to create a custom directory structure，as long as in the root dire
     {
         "js":[
             "lib",
-            "mod"
+            "mod",
+            "pkg"
         ]
     },
     "images",
     "psd",
     "doc",
+    "test",
     "onlineBackup"
 ]
 
