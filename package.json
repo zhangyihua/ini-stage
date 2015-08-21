@@ -1,6 +1,6 @@
 {
   "name": "ini-stage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An initialization scaffolding tool",
   "main": "index.js",
   "bin": {
