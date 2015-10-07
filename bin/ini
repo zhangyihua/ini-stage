@@ -8,14 +8,14 @@ program
     .parse(process.argv);
 
 if (program.start) {
-
     var path = require('path');
     var fs = require('fs');
+    var childProccess = require('child_process');
 
-    var traversal = require('../modules/traversal');
+    // var traversal = require('../modules/traversal');
     var build = require('../modules/build');
     var currentPath = process.cwd();
-    var config = currentPath + "/config.json";
+    var config = currentPath + "/config.json"; //用户自定义配置文件
     var configDefault = require("../conf/config.json");
 
 
@@ -23,7 +23,19 @@ if (program.start) {
         if (!exists) {
             config = configDefault;
         }
-        build(config, currentPath, traversal);
+        // 构建目录结构
+        // build(config, currentPath, traversal);
+        build(config, currentPath);
+
+        // 初始化 git 仓库
+        childProccess.exec('git init', function(err, stdout, stderr){
+            if (err) {
+                console.log(err.stack);
+                console.log('Error code:'+err.code);
+            }
+            console.log('git init stdout:'+ stdout);
+        });
+
     });
 
 }

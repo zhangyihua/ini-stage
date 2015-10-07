@@ -1,6 +1,7 @@
-module.exports = function(config, currentPath, trave) {
+module.exports = function(config, currentPath) {
     var fs = require('fs');
     var colors = require('colors');
+    var trave = require('./traversal');
 
     var str = "build in " + currentPath + ":\n";
     console.log(str);
