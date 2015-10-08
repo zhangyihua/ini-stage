@@ -12,6 +12,7 @@ module.exports = function(config, currentPath) {
         fs.readFile(config, function(err, data) {
             if (err) {
                 console.log(err);
+                return;
             }
             var dirStru = null;
             var newFilePath = '';
