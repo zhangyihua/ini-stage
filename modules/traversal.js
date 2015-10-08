@@ -13,13 +13,13 @@ module.exports = function (dirStru, currentPath) {
                 if(err) {
                     console.log(err);
                 } else {
-                    tmpStr = "Create a file:" + __path.magenta + ' sucessfully';
+                    tmpStr = __path.magenta + ' sucessfully';
                     console.log(tmpStr);
                 }
             });
         } else { // make a folder
             fs.mkdirSync(__path);
-            tmpStr = "Create a folder:" + __path.green + ' sucessfully';
+            tmpStr = __path.green + ' sucessfully';
             console.log(tmpStr);
         }
     }
