@@ -12,5 +12,7 @@
 	"psd",
 	"doc",
 	"test",
-	"onlineBackup"
+	"template",
+	"backup",
+	"#README.md",
 ]
