@@ -24,8 +24,7 @@ if (program.start) {
         // 构建目录结构
         build(config, currentPath);
 
-        console.log("program.start[0]:" + program.start[0]);
-        if(program.start[0] == 'git') {
+        if(process.argv.slice(2)[1] == 'git') {
             // 初始化 git 仓库
             childProccess.exec('git init', function(err, stdout, stderr){
                 if (err) {
