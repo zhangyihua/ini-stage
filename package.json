@@ -1,6 +1,6 @@
 {
   "name": "ini-stage",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "An initialization scaffolding tool",
   "main": "index.js",
   "bin": {
@@ -15,18 +15,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhangyihua/iniStage.git"
+    "url": "https://github.com/zhangyihua/ini-stage.git"
   },
   "keywords": [
-    "iniStage",
+    "ini-stage",
     "scaffolding",
     "initialization",
-    "ini"
+    "ini",
+    "init",
+    "stage"
   ],
   "author": "zhangyihua",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zhangyihua/iniStage/issues"
+    "url": "https://github.com/zhangyihua/ini-stage/issues"
   },
-  "homepage": "https://github.com/zhangyihua/iniStage"
+  "homepage": "https://github.com/zhangyihua/ini-stage"
 }

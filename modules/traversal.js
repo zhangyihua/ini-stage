@@ -3,24 +3,23 @@ module.exports = function (dirStru, currentPath) {
     var __path = '';
     var tmpStr = '';
 
-    // 创建文件或文件夹
+    // make a file or folder
     var make = function(__path, isFile) {
         if(fs.existsSync(__path)){
             tmpStr = __path.gray + " exists".red;
             console.log(tmpStr);
-        }else if (isFile) { // 创建文件
+        }else if (isFile) { // make a file
             fs.open(__path, 'w+', 755, function(err, fd){
                 if(err) {
                     console.log(err);
                 } else {
-                    tmpStr = __path.magenta + ' sucess';
+                    tmpStr = __path.magenta + ' sucessfully';
                     console.log(tmpStr);
-                    // console.log("open "+ __path + " file describe:" + fd);
                 }
             });
-        } else { // 创建目录
+        } else { // make a folder
             fs.mkdirSync(__path);
-            tmpStr = __path.green + ' sucess';
+            tmpStr = __path.green + ' sucessfully';
             console.log(tmpStr);
         }
     }
@@ -37,20 +36,8 @@ module.exports = function (dirStru, currentPath) {
                 if(isFile) {
                     _item = _item.length>2 ? _item.substr(1, _item.length-1) : "somefile"+parseInt(Math.random()*10000);
                 }
-
                 __path = currentPath + '/' + _item;
-                // if(fs.existsSync(__path)){
-                //     tmpStr = __path.gray + " exists".red;
-                //     console.log(tmpStr);
-                // }else{
-                //     fs.mkdirSync(__path);
-                //     tmpStr = __path.green + ' sucess';
-                //     console.log(tmpStr);
-                // }
-
                 make(__path, isFile);
-
-                // traversal(children, __path);
                 arguments.callee(children, __path);
             }
         } else {
@@ -61,17 +48,7 @@ module.exports = function (dirStru, currentPath) {
                 _item = _item.length > 2 ? _item.substr(1, _item.length-1) : "somefile"+parseInt(Math.random()*10000);
             }
             __path = currentPath + '/' + _item;
-            // if(fs.existsSync(__path)){
-            //     tmpStr = __path.gray+" exists".red;
-            //     console.log(tmpStr);
-            // }else{
-            //     fs.mkdirSync(__path);
-            //     tmpStr = __path.green + ' sucess';
-            //     console.log(tmpStr);
-            // }
             make(__path, isFile);
         }
     }
 };
-
-// module.exports = traversal;

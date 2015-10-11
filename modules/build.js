@@ -12,14 +12,23 @@ module.exports = function(config, currentPath) {
         fs.readFile(config, function(err, data) {
             if (err) {
                 console.log(err);
+                return;
             }
             var dirStru = null;
             var newFilePath = '';
 
             dirStru = JSON.parse(data.toString());
-            trave(dirStru, currentPath);
+            if(dirStru instanceof Array) {
+                trave(dirStru, currentPath);
+            } else {
+                var errorMsg = 'the format of config.json must be an array'.red;
+                console.log(errorMsg);
+                throw new Error(errorMsg);
+            }
         });
     } else {
-        throw new Error('the format of config.json must be an array or a json file path!'.red);
+        var errorMsg = 'the config parameter must be an array or a json file path'.red;
+        console.log(errorMsg);
+        throw new Error(errorMsg);
     }
 }
