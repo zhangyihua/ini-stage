@@ -1,54 +1,92 @@
-module.exports = function (dirStru, currentPath) {
-    var fs = require('fs');
-    var __path = '';
-    var tmpStr = '';
+module.exports = function(dirStru, currentPath) {
+    var fs = require('fs'),
+        conf = require('./conf');
 
-    // make a file or folder
-    var make = function(__path, isFile) {
-        if(fs.existsSync(__path)){
-            tmpStr = __path.gray + " exists".red;
-            console.log(tmpStr);
-        }else if (isFile) { // make a file
-            fs.open(__path, 'w+', 755, function(err, fd){
-                if(err) {
-                    console.log(err);
-                } else {
-                    tmpStr = __path.magenta + ' sucessfully';
-                    console.log(tmpStr);
-                }
-            });
-        } else { // make a folder
-            fs.mkdirSync(__path);
-            tmpStr = __path.green + ' sucessfully';
-            console.log(tmpStr);
+    traversal(dirStru, currentPath);
+
+    function traversal(dirStru, currentPath) {
+        for (var i = 0; i < dirStru.length; i++) {
+            if (dirStru[i] == '') {
+                continue;
+            };
+            if (typeof dirStru[i] === "object" && !(dirStru[i] instanceof Array)) {
+                makeMultiLevelPath.call(this, arguments, dirStru[i]);
+            } else {
+                makeSubPath(dirStru[i], currentPath);
+            }
         }
     }
 
-    for (var i = 0; i < dirStru.length; i++) {
-        if (dirStru[i] == '') {
-            continue;
-        };
-        if (typeof dirStru[i] === "object") {
-            for (var _item in dirStru[i]) {
-                var children = dirStru[i][_item];
-                var isFile = _item.charAt(0) == '#' ? true : false;
+    function checkIsFile(item) {
+        return /^\#/.test(item);
+    }
 
-                if(isFile) {
-                    _item = _item.length>2 ? _item.substr(1, _item.length-1) : "somefile"+parseInt(Math.random()*10000);
-                }
-                __path = currentPath + '/' + _item;
-                make(__path, isFile);
-                arguments.callee(children, __path);
-            }
+    function makeSubPath(item, currentPath) {
+        var isFile = checkIsFile(item);
+        if (isFile) {
+            var fileName = getFileName(item);
+            var path = currentPath + '/' + fileName;
+            !pathExists(path) && createFile(path);
         } else {
-            var _item = dirStru[i];
-            var isFile = _item.charAt(0) == '#' ? true : false;
-
-            if(isFile) {
-                _item = _item.length > 2 ? _item.substr(1, _item.length-1) : "somefile"+parseInt(Math.random()*10000);
-            }
-            __path = currentPath + '/' + _item;
-            make(__path, isFile);
+            var path = currentPath + '/' + item;
+            !pathExists(path) && createDir(path);
         }
+    }
+
+
+    function makeMultiLevelPath(parentArguments, dirStru) {
+        for (var subDirName in dirStru) {
+            var subDirValue = dirStru[subDirName];
+            var subDirPath = currentPath + '/' + subDirName;
+
+            if (!pathExists(subDirPath)) {
+                createDir(subDirPath);
+            }
+
+            if (parentArguments) {
+                parentArguments.callee(subDirValue, subDirPath);
+            }
+        }
+    }
+
+    function getFileName(fileName) {
+       return fileName.length > 2 ? fileName.substr(1, fileName.length - 1) : conf.DEF_FILE_NAME + parseInt(Math.random() * 10000);
+    }
+
+    function pathExists(path) {
+        if (fs.existsSync(path)) {
+            var logStr = path.gray + " exists".red;
+            console.log(logStr);
+            return true;
+        }
+        return false;
+    }
+
+    function createFile(path) {
+        fs.open(path, 'w+', 755, function(err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            var logStr = path.magenta + conf.msg.SUCCESS_TIPS;
+            console.log(logStr);
+        });
+    }
+
+    function createDir(path) {
+        fs.mkdirSync(path);
+        var logStr = path.green + conf.msg.SUCCESS_TIPS;
+        console.log(logStr);
+        
+        // fs.mkdir(path, 755, function(err) {
+        //     if (err) {
+        //         console.log(err);
+        //         return;
+        //     }
+
+        //     var logStr = path.green + conf.msg.SUCCESS_TIPS;
+        //     console.log(logStr);
+        // });
     }
 };
