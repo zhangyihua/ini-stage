@@ -1,7 +1,5 @@
 module.exports = function(config, currentPath) {
-    var fs = require('fs'),
-        colors = require('colors'),
-        traversalConfig = require('./traversal'),
+    var traversalConfig = require('./traversal'),
         conf = require('./conf');
 
     console.log(conf.msg.START_BUILD);

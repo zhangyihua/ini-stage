@@ -1,8 +1,8 @@
 {
   "name": "ini-stage",
-  "version": "1.0.4",
-  "description": "An initialization scaffolding tool",
-  "main": "index.js",
+  "version": "1.0.5",
+  "description": "An initialization scaffolding tool for front-end developer",
+  "main": "./modules/ini.js",
   "bin": {
     "ini": "./bin/ini"
   },

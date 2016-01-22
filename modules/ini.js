@@ -1,26 +1,25 @@
 module.exports = function(){
-	var fs = require('fs');
-	var childProccess = require('child_process');
-	var build = require('../modules/build');
+	var fs = require('fs'),
+		childProccess = require('child_process'),
+		build = require('../modules/build');
 
 	var currentPath = process.cwd();
-	var config = currentPath + "/config.json"; //用户自定义配置文件
+	var config = currentPath + "/config.json"; // custom config.json
 
 	fs.exists(config, function(exists) {
 	    if (!exists) {
-	        config = require("../conf/config.json"); //默认配置文件;
+	        config = require("../conf/config.json"); // default config.json
 	    }
-	    // 构建目录结构
+
+	    // build
 	    build(config, currentPath);
 
+	    // initailize git
 	    if(process.argv.slice(2)[1] == 'git') {
-	        // 初始化 git 仓库
 	        childProccess.exec('git init', function(err, stdout, stderr){
 	            if (err) {
-	                // console.error(err.stack);
-	                // console.error('Error code:'+err.code);
-	                throw new Error(err);
-	                // return;
+	                console.error(err);
+	                return;
 	            }
 	            console.log(stdout);
 	        });
