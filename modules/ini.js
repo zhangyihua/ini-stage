@@ -4,11 +4,13 @@ module.exports = function(){
 		build = require('../modules/build');
 
 	var currentPath = process.cwd();
-	var config = currentPath + "/config.json"; // custom config.json
+	var customConfigPath = currentPath + "/config.json";
 
-	fs.exists(config, function(exists) {
+	fs.exists(customConfigPath, function(exists) {
 	    if (!exists) {
-	        config = require("../conf/config.json"); // default config.json
+	        var config = require("../conf/config.json"); // default config.json
+	    } else {
+	    	var config = require(customConfigPath); // custom config.json
 	    }
 
 	    // build

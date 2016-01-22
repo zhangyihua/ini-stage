@@ -1,5 +1,6 @@
 module.exports = function() {
-	var fs = require('fs');
+	var fs = require('fs'),
+        conf = require('./conf')
 
     return {
         checkIsFile: function(item) {
@@ -11,7 +12,7 @@ module.exports = function() {
             if (!this.checkIsFile(fileName)) {
                 throw new Error(fileName + 'isn\'t a file, a file should be start with #');
             }
-            return fileName.length > 2 ? fileName.substr(1, fileName.length - 1) : conf.DEF_FILE_NAME + parseInt(Math.random() * 10000);
+            return fileName.length > 2 ? fileName.substr(1, fileName.length - 1) : conf.DEF_FILE_NAME + Date.now();
         },
 
         pathExists: function(path) {
