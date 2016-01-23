@@ -1,8 +1,8 @@
 module.exports = function() {
-	var fs = require('fs'),
+    var fs = require('fs'),
         colors = require('colors'),
-		conf = require('./conf'),
-		util = require('./util')();
+        conf = require('./conf'),
+        util = require('./util')();
 
     return {
         makeSubPath: function(item, currentPath) {
@@ -10,10 +10,14 @@ module.exports = function() {
             if (isFile) {
                 var fileName = util.getFileName(item);
                 var path = currentPath + '/' + fileName;
-                !util.pathExists(path) && this.createFile(path);
+                if (!util.pathExists(path)) {
+                    return this.createFile(path);
+                }
             } else {
                 var path = currentPath + '/' + item;
-                !util.pathExists(path) && this.createDir(path);
+                if (!util.pathExists(path)) {
+                    return this.createDir(path);
+                }
             }
         },
 
@@ -34,21 +38,27 @@ module.exports = function() {
         },
 
         createFile: function(path) {
-            fs.open(path, 'w+', 755, function(err) {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-
+            try {
+                fs.openSync(path, 'w+', 755);
                 var logStr = path.magenta + conf.msg.SUCCESS_TIPS;
                 console.log(logStr);
-            });
+                return true;
+            } catch(exception) {
+                console.warn(exception);
+                return false;
+            }
         },
 
         createDir: function(path) {
-            fs.mkdirSync(path);
-            var logStr = path.green + conf.msg.SUCCESS_TIPS;
-            console.log(logStr);
+            try {
+                fs.mkdirSync(path);
+                var logStr = path.green + conf.msg.SUCCESS_TIPS;
+                console.log(logStr);
+                return true;
+            } catch(exception) {
+                console.warn(exception);
+                return false;
+            }
         }
     }
 }

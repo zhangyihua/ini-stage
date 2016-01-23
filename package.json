@@ -1,17 +1,19 @@
 {
   "name": "ini-stage",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "An initialization scaffolding tool for front-end developer",
   "main": "./modules/ini.js",
   "bin": {
     "ini": "./bin/ini"
   },
   "dependencies": {
-    "colors": "^1.1.2",
-    "commander": "^2.8.1"
+    "colors": "*",
+    "commander": "*",
+    "mocha": "*",
+    "chai": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/test.js"
   },
   "repository": {
     "type": "git",

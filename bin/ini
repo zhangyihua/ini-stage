@@ -4,7 +4,7 @@ var commander = require('commander');
 var ini = require('../modules/ini');
 
 commander
-    .version('1.0.5')
+    .version('1.0.8')
     .option('-s, --start [git]', 'Start initialize. The git is optional, refers to automatic initialization git')
     .parse(process.argv);
 

@@ -1,4 +1,6 @@
 [
+	"html",
+	"css",
 	{
 		"js":[
 			"lib",
@@ -6,5 +8,6 @@
 			"pkg"
 		]
 	},
-	"#"
+	"images",
+	"#README.md"
 ]
