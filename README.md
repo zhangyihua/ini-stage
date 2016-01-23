@@ -1,6 +1,6 @@
 ## Introduction 
 
-[![npm version](https://badge.fury.io/js/ini-stage.svg)](https://badge.fury.io/js/ini-stage)
+[![npm version](https://badge.fury.io/js/ini-stage.svg)](https://badge.fury.io/js/ini-stage) [![Build Status](https://travis-ci.org/zhangyihua/ini-stage.svg?branch=master)](https://travis-ci.org/zhangyihua/ini-stage)
 
 An initialization scaffolding tool for front-end developer. I'm use it to initialize my project scaffolding, and no need to create the project folder struct every time, just use the commonder line in `ini -s`.
 
