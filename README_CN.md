@@ -1,6 +1,6 @@
 ## 简介 
 
-[![npm version](https://badge.fury.io/js/ini-stage.svg)](https://badge.fury.io/js/ini-stage) [![Build Status](https://travis-ci.org/zhangyihua/ini-stage.svg?branch=master)](https://travis-ci.org/zhangyihua/ini-stage)
+[![npm version](https://badge.fury.io/js/ini-stage.svg)](https://badge.fury.io/js/ini-stage) [![Build Status](https://travis-ci.org/zhangyihua/ini-stage.svg?branch=master)](https://travis-ci.org/zhangyihua/ini-stage) [![npm](https://img.shields.io/npm/dt/ini-stage.svg)](http://npm-stat.com/charts.html?package=ini-stage&author=zhangyihua&from=2015-06-01&to=2116-01-24)
 
 `ini-stage` 是一个用来自动初始化 web 前端工程目录的简单小工具。没必要每次开始新项目的时候都重新创建工程目录，只需一条命令 `ini -s` 即可完成。
 
